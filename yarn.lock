@@ -1251,9 +1251,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cpimagined@workspace:.":
+"cpzero@workspace:.":
   version: 0.0.0-use.local
-  resolution: "cpimagined@workspace:."
+  resolution: "cpzero@workspace:."
   dependencies:
     "@types/discord-rpc": "npm:^4.0.8"
     "@types/electron-prompt": "npm:^1.6.5"

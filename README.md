@@ -1,10 +1,10 @@
-# CPImagined Client
+# CPZero Client
 
-The official client for Club Penguin Imagined!
+The official client for Club Penguin Zero!
 
 ## Installation
 
-Executables are available in [releases](https://github.com/CPImagined/CPI-Client/releases/latest) for Windows, Mac, and Linux.
+Executables are available in [releases](https://github.com/ClubPenguinZero/CPZ-Client/releases/latest) for Windows, Mac, and Linux.
 
 ## Features
 
@@ -14,7 +14,7 @@ Executables are available in [releases](https://github.com/CPImagined/CPI-Client
 - Fullscreen mode.
 - Zoom with `CMD/CTRL +`, `CMD/CTRL -` and `CMD/CTRL + 0`.
 - Developer tools. (inspect element)
-- Ad blocker. (not included in builds - **CPI IS NOT MONETIZED**)
+- Ad blocker. (not included in builds - **CPZ IS NOT MONETIZED**)
 - Ad blocker can be excluded from the build if not needed.
 - Discord Rich Presence. (enabled by default)
 - Discord Rich Presence room tracking. (enabled by default)
@@ -35,6 +35,6 @@ The client can also track the user's in-game location through Rich Presence. You
 ![image](./readme/rpctrackingroom.png)
 
 ### License
-This project uses the [MIT License](https://github.com/CPimagined/CPI-Client/blob/main/LICENSE).
+This project uses the [MIT License](https://github.com/ClubPenguinZero/CPZ-Client/blob/main/LICENSE).
 
 Modified from [Club Penguin Avalanche](https://github.com/Club-Penguin-Avalanche/CPA-Client).

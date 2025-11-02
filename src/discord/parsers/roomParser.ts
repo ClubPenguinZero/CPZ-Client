@@ -51,7 +51,7 @@ export const updateRooms = (store: Store, result: RoomsResponse) => {
 
     // Some overrides to fix some room data due to Disney weirdness.
     const locationOverrides: CPLocationOverride[] = [
-        roomLocationOverride('igloo', localizer.__('LOC_IGLOO')),
+        /*roomLocationOverride('igloo', localizer.__('LOC_IGLOO')),
 
         roomLocationOverride('dojo fire', localizer.__('LOC_DOJO_FIRE')),
         roomLocationOverride('dojo water', localizer.__('LOC_DOJO_WATER')),
@@ -75,7 +75,8 @@ export const updateRooms = (store: Store, result: RoomsResponse) => {
         gameLocationOverride('find four', undefined, undefined, 'four', true),
         gameLocationOverride('treasure hunt', undefined, undefined, 'treasurehunt', true),
 
-        gameLocationOverride('mission', undefined, undefined, 'q', true, true)
+        gameLocationOverride('mission', undefined, undefined, 'q', true, true)*/
+        // Zero updates this file
     ];
 
     /*

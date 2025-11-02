@@ -5,7 +5,7 @@ import { PrivateSchema } from './store/PrivateSchema';
 import { MemoryStore } from './store/MemoryStore';
 import { FileStore } from './store/FileStore';
 
-export const PLAY_URL = 'https://play.cpimagined.net/';
+export const PLAY_URL = 'https://play.cpzero.net/';
 
 export type Store = {
     public: BaseStore<PublicSchema>;

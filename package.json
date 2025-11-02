@@ -1,11 +1,11 @@
 {
-  "name": "cpimagined",
+  "name": "cpzero",
   "version": "1.0.0",
-  "description": "Desktop client for CPImagined!",
+  "description": "Desktop client for CPZero!",
   "main": "./compiled/main.js",
   "scripts": {
     "clean": "rimraf compiled/",
-    "copy-files": "copyfiles -u 1 assets/**/* assets/* assets/flash/PepperFlashPlayer.plugin/Contents/* assets/flash/PepperFlashPlayer.plugin/Contents/_CodeSignature/* assets/flash/PepperFlashPlayer.plugin/Contents/MacOS/* compiled/assets/",
+    "copy-files": "copyfiles -u 1 assets/**/* assets/* assets/flash/PepperFlashPlayer.plugin/Contents/* assets/flash/PepperFlashPlayer.plugin/Contents/MacOS/* compiled/assets/",
     "copy-localization": "copyfiles -u 1 src/localization/*.json compiled/",
     "build-tsc": "yarn clean && tsc && yarn copy-files && yarn copy-localization",
     "start": "yarn build-tsc && electron ./compiled/main.js",
@@ -15,10 +15,10 @@
     "build-linux": "electron-builder build --linux --x64 --publish never"
   },
   "bugs": {
-    "url": "https://github.com/CPImagined/CPI-Client/issues"
+    "url": "https://github.com/ClubPenguinZero/CPZ-Client/issues"
   },
-  "homepage": "https://github.com/CPImagined/CPI-Client/#readme",
-  "repository": "https://github.com/CPImagined/CPI-Client",
+  "homepage": "https://github.com/ClubPenguinZero/CPZ-Client/#readme",
+  "repository": "https://github.com/ClubPenguinZero/CPZ-Client",
   "author": "renanrcp",
   "contributors": [
     "ooowoo",
@@ -28,17 +28,17 @@
   "license": "MIT",
   "build": {
     "electronDist": "node_modules/electron/dist",
-    "appId": "com.cpimagined.desktop",
-    "productName": "CPImagined Desktop",
+    "appId": "com.cpzero.desktop",
+    "productName": "CPZero Desktop",
     "asar": "false",
     "win": {
       "publish": "github",
-      "artifactName": "CPImagined-Client-Setup-${version}.${ext}"
+      "artifactName": "CPZero-Client-Setup-${version}.${ext}"
     },
     "mac": {
       "category": "game",
       "icon": "./assets/icon.icns",
-      "artifactName": "CPImagined-Client-${version}.${ext}"
+      "artifactName": "CPZero-Client-${version}.${ext}"
     },
     "linux": {
       "category": "game",
@@ -51,10 +51,10 @@
       "maintainer": "renanrcp"
     },
     "appImage": {
-      "synopsis": "Club Penguin Imagined Client",
+      "synopsis": "Club Penguin Zero Client",
       "description": "Club Penguin Flash Player client",
       "category": "Games",
-      "artifactName": "CPImagined-Client-${version}.${ext}"
+      "artifactName": "CPZero-Client-${version}.${ext}"
     }
   },
   "devDependencies": {
