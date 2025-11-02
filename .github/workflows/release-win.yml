@@ -30,8 +30,9 @@ jobs:
         # architecture: 'x86'
     
     # Do we need to do this?
-    # - name: Get corepack
-    #   run: npm install -g corepack
+    # yes, yes we do
+    - name: Get corepack
+      run: npm install -g corepack
 
     - name: Enable corepack
       run: corepack enable
