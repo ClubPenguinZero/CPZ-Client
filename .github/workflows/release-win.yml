@@ -36,9 +36,6 @@ jobs:
     - name: Enable corepack
       run: corepack enable
 
-    - name: Install Yarn 4.1.0
-      run: corepack prepare yarn@4.1.0 --activate
-
     - name: Update yarn
       run: yarn install
 
