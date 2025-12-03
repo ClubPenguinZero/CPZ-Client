@@ -36,6 +36,9 @@ jobs:
     - name: Enable corepack
       run: corepack enable
 
+    - name: Set yarn version
+      run: yarn set version latest --yarn-path
+
     - name: Update yarn
       run: yarn install
 
