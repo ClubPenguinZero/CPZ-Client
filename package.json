@@ -86,6 +86,7 @@
     "@cliqz/adblocker-electron": "^1.25.2",
     "cross-fetch": "^4.0.0"
   },
+  "packageManager": "yarn@4.1.0",
   "resolutions": {
     "node-gyp@npm:latest": "patch:node-gyp@npm%3A10.0.1#~/patches/node-gyp-npm-10.0.1-48708ce70b.patch"
   }
