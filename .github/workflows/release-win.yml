@@ -36,8 +36,8 @@ jobs:
     - name: Enable corepack
       run: corepack enable
 
-    - name: Update yarn
-      run: yarn install
+   # - name: Update yarn
+   #   run: yarn install
 
     - name: Build Typescript
       run: yarn build-tsc
