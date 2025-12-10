@@ -1,5 +1,4 @@
 import { BrowserWindow, Menu, MenuItem, MenuItemConstructorOptions, dialog, app } from "electron";
-import { enableOrDisableAdblocker } from "./adblocker/adblocker";
 import { adblocker } from "./adblocker/adblocker_imports";
 import clearCache from "./cache";
 import toggleDevTools from "./dev-tools";
@@ -80,6 +79,7 @@ const createMenuTemplate = (store: Store, mainWindow: BrowserWindow): MenuItemCo
     template.push(options);
     
     if (adblocker != null) {
+		const enableOrDisableAdblocker = require("./adblocker/adblocker").enableOrDisableAdblocker;
         const adblock: MenuItemConstructorOptions = {
             id: '2',
             label: localizer.__('MENU_ADBLOCK'),

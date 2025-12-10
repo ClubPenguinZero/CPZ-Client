@@ -2,8 +2,8 @@
 
 Please check if your PR fulfills the following requirements:
 - [ ] Docs have been reviewed and added / updated if needed (for bug fixes / features)
-- [ ] Build (`yarn build-tsc`) was run locally and any changes were pushed
-- [ ] Lint (`yarn lint`) has passed locally and any fixes were made for failures
+- [ ] Build (`npm run build-tsc`) was run locally and any changes were pushed
+- [ ] Lint (`npm run lint`) has passed locally and any fixes were made for failures
 
 ## Issues
 <!-- Please list all linked issues for this PR, if none, please write the 2 above sections -->

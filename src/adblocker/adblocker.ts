@@ -1,7 +1,7 @@
 import { BrowserWindow, dialog } from 'electron';
 import { Store } from '../store';
 import { showReloadDialog } from '../reload';
-import { adblocker, cross_fetch } from './adblocker_imports';
+import { adblocker, fetch } from './adblocker_imports';
 
 export let createAdblocker: Function;
 export let enableOrDisableAdblocker: Function;
@@ -32,7 +32,7 @@ if (adblocker != null) {
     };
 
     createAdblocker = async (store: Store, mainWindow: BrowserWindow) => {
-        const blocker = await adblocker.ElectronBlocker.fromPrebuiltAdsAndTracking(cross_fetch.fetch);
+        const blocker = await adblocker.ElectronBlocker.fromPrebuiltAdsAndTracking(fetch);
     
         setBlockerInStore(store, blocker);
     
@@ -65,12 +65,5 @@ if (adblocker != null) {
         updateAdblockerIsEnabled(store);
 
         showReloadDialog(store, mainWindow);
-    };
-} else {
-    // We're not building with adblocker support so these will do nothing.
-    createAdblocker = async (store: Store, mainWindow: BrowserWindow) => {
-    };
-    
-    enableOrDisableAdblocker = async (store: Store, mainWindow: BrowserWindow) => {
     };
 }

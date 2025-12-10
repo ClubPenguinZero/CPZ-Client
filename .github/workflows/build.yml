@@ -10,39 +10,37 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
-      - name: Install Node.js, NPM and Yarn
-        uses: actions/setup-node@v4
+      - name: Install Node.js and npm
+        uses: actions/setup-node@v6
         with:
-          node-version: "latest"
+          node-version: '24.11.1'
+          package-manager-cache: false
 
-      - name: Enable corepack
-        run: corepack enable
+      - name: Update npm environent
+        run: npm install --production
 
-      - name: Update yarn
-        run: yarn install
-
-      - name: Build Typescript
-        run: yarn build-tsc
+      - name: Compile TypeScript scripts
+        run: npm run build-tsc
 
       - name: Build for Windows
         if: matrix.os == 'windows-latest'
-        run: yarn build-win
+        run: npm run build-win
 
       - name: Build for Linux
         if: matrix.os == 'ubuntu-latest'
-        run: yarn build-linux
+        run: npm run build-linux
 
       - name: Build for Mac
         if: matrix.os == 'macos-latest'
-        run: yarn build-mac
+        run: npm run build-mac
 
       - name: Upload Windows Artifacts
         if: matrix.os == 'windows-latest'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: artifacts_windows
           path: |
@@ -52,7 +50,7 @@ jobs:
 
       - name: Upload Linux Artifacts
         if: matrix.os == 'ubuntu-latest'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: artifacts_linux
           path: |
@@ -62,7 +60,7 @@ jobs:
 
       - name: Upload Mac Artifacts
         if: matrix.os == 'macos-latest'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: artifacts_macos
           path: |

@@ -5,6 +5,7 @@ import { PrivateSchema } from './store/PrivateSchema';
 import { MemoryStore } from './store/MemoryStore';
 import { FileStore } from './store/FileStore';
 
+// Default URL the client visits
 export const PLAY_URL = 'https://play.cpzero.net/';
 
 export type Store = {

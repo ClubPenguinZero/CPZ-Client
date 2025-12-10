@@ -1,11 +1,13 @@
 import { BrowserWindow } from 'electron';
 import path = require('path');
-import { createAdblocker } from './adblocker/adblocker';
+import { adblocker } from "./adblocker/adblocker_imports";
 import { Store } from "./store";
 import { getUrlFromStore } from './urlchanger';
 
 export const toggleFullScreen = (store: Store, mainWindow: BrowserWindow) => {
-    const fullScreen = !store.private.get("fullScreen") ?? false;
+	// !null or !undefined returns true so we have to do this.
+    let fullScreen = store.private.get("fullScreen") ?? false;
+	fullScreen = !fullScreen;
 
     store.private.set("fullScreen", fullScreen);
 
@@ -42,11 +44,13 @@ const createWindow = async (store: Store) => {
 
     mainWindow.setMenu(null);
     mainWindow.maximize();
-
-    await createAdblocker(store, mainWindow);
+	
+	if (adblocker != null) {
+		const createAdblocker = require("./adblocker/adblocker").createAdblocker;
+		await createAdblocker(store, mainWindow);
+	}
 
     const url = getUrlFromStore(store);
-
     mainWindow.loadURL(url);
 
     return mainWindow;

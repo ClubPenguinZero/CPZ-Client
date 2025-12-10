@@ -1,11 +1,10 @@
 export let adblocker: any;
-export let cross_fetch: any;
+export let fetch: Function;
 
 try {
-    adblocker = require('@cliqz/adblocker-electron');
-
-    cross_fetch = require('cross-fetch').fetch;
+    adblocker = require('@ghostery/adblocker-electron');
+    fetch = require('cross-fetch');
 } catch (err) {
     adblocker = null;
-    cross_fetch = null;
+    fetch = null;
 }

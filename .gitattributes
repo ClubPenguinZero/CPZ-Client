@@ -1,4 +1,8 @@
-/.yarn/**            linguist-vendored
-/.yarn/releases/*    binary
-/.yarn/plugins/**/*  binary
-/.pnp.*              binary linguist-generated
+*.txt           text
+
+*.gitattributes text
+.gitignore      text
+*.md            text diff=markdown
+
+*.ts            text
+*.yml           text

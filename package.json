@@ -1,14 +1,14 @@
 {
   "name": "cpzero",
   "version": "1.0.0",
-  "description": "Desktop client for CPZero!",
+  "description": "Desktop client for Club Penguin Zero",
   "main": "./compiled/main.js",
   "scripts": {
     "clean": "rimraf compiled/",
     "copy-files": "copyfiles -u 1 assets/**/* assets/* assets/flash/PepperFlashPlayer.plugin/Contents/* assets/flash/PepperFlashPlayer.plugin/Contents/MacOS/* compiled/assets/",
     "copy-localization": "copyfiles -u 1 src/localization/*.json compiled/",
-    "build-tsc": "yarn clean && tsc && yarn copy-files && yarn copy-localization",
-    "start": "yarn build-tsc && electron ./compiled/main.js",
+    "build-tsc": "npm run clean && tsc && npm run copy-files && npm run copy-localization",
+    "start": "npm run build-tsc && electron ./compiled/main.js",
     "lint": "eslint -c .eslintrc --ext .ts ./src",
     "build-win": "electron-builder build --win --ia32 --publish never",
     "build-mac": "electron-builder build --mac --publish never",
@@ -28,7 +28,7 @@
   "license": "MIT",
   "build": {
     "electronDist": "node_modules/electron/dist",
-    "appId": "com.cpzero.desktop",
+    "appId": "net.cpzero.desktop",
     "productName": "CPZero Desktop",
     "asar": "false",
     "win": {
@@ -52,42 +52,37 @@
     },
     "appImage": {
       "synopsis": "Club Penguin Zero Client",
-      "description": "Club Penguin Flash Player client",
+      "description": "Desktop client for Club Penguin Zero",
       "category": "Games",
       "artifactName": "CPZero-Client-${version}.${ext}"
     }
   },
   "devDependencies": {
-    "@types/discord-rpc": "^4.0.8",
+    "@types/discord-rpc": "^4.0.10",
     "@types/electron-prompt": "^1.6.5",
-    "@types/node": "^20.11.19",
-    "@typescript-eslint/eslint-plugin": "^7.0.1",
-    "@typescript-eslint/parser": "^7.0.1",
+    "@types/node": "^24.10.2",
+    "@typescript-eslint/eslint-plugin": "^8.49.0",
+    "@typescript-eslint/parser": "^8.49.0",
     "copyfiles": "^2.4.1",
     "electron": "^11.5.0",
-    "electron-builder": "^24.9.1",
-    "eslint": "^8.56.0",
+    "electron-builder": "^26.0.12",
+    "eslint": "^9.39.1",
     "eslint-plugin-prefer-arrow": "^1.2.3",
-    "rimraf": "^5.0.5",
-    "typescript": "^5.3.3"
+    "rimraf": "^6.1.2",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "discord-rpc": "^4.0.1",
     "electron-fetch": "^1.9.1",
     "electron-is-dev": "^3.0.1",
-    "electron-log": "^5.1.1",
+    "electron-log": "^5.4.3",
     "electron-prompt": "^1.7.0",
-    "electron-store": "^8.1.0",
-    "electron-updater": "^6.1.7",
-    "node-gyp": "patch:node-gyp@npm%3A10.0.1#~/patches/node-gyp-npm-10.0.1-48708ce70b.patch"
+    "electron-store": "^8.2.0",
+    "electron-updater": "^6.6.2"
   },
   "//": {
-    "This seems to need to be installed manually as it seems to try to download some components from the latest version (1.26.16) even though I'm specifying 1.25.2.": "We don't need to worry about it right now though so I'm leaving these out.",
-    "@cliqz/adblocker-electron": "^1.25.2",
-    "cross-fetch": "^4.0.0"
-  },
-  "packageManager": "yarn@4.1.0",
-  "resolutions": {
-    "node-gyp@npm:latest": "patch:node-gyp@npm%3A10.0.1#~/patches/node-gyp-npm-10.0.1-48708ce70b.patch"
+	"For some reason this confuses the installation.": "We don't need to worry about it though because we're not including the adblocker.",
+    "@ghostery/adblocker-electron": "^1.20.5",
+    "cross-fetch": "^4.1.0"
   }
 }
