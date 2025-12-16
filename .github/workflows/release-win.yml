@@ -29,7 +29,7 @@ jobs:
         package-manager-cache: false
 
     - name: Update npm environent
-      run: npm install --production
+      run: npm install
 
     - name: Compile TypeScript scripts
       run: npm run build-tsc
