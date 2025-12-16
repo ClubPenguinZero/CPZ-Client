@@ -21,7 +21,7 @@ jobs:
           package-manager-cache: false
 
       - name: Update npm environent
-        run: npm install --omit=dev
+        run: npm install
 
       - name: Compile TypeScript scripts
         run: npm run build-tsc
