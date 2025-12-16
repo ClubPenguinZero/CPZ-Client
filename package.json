@@ -7,12 +7,13 @@
     "clean": "rimraf compiled/",
     "copy-files": "copyfiles -u 1 assets/**/* assets/* assets/flash/PepperFlashPlayer.plugin/Contents/* assets/flash/PepperFlashPlayer.plugin/Contents/MacOS/* compiled/assets/",
     "copy-localization": "copyfiles -u 1 src/localization/*.json compiled/",
-    "build-tsc": "npm run clean && tsc && npm run copy-files && npm run copy-localization",
-    "start": "npm run build-tsc && electron ./compiled/main.js",
+    "build-tsc": "tsc && npm run copy-files && npm run copy-localization",
+    "start": "npm run clean && npm run build-tsc && electron ./compiled/main.js",
     "lint": "eslint -c .eslintrc --ext .ts ./src",
     "build-win": "electron-builder build --win --ia32 --publish never",
     "build-mac": "electron-builder build --mac --publish never",
-    "build-linux": "electron-builder build --linux --x64 --publish never"
+    "build-linux": "electron-builder build --linux --x64 --publish never",
+    "postinstall": "patch-package"
   },
   "bugs": {
     "url": "https://github.com/ClubPenguinZero/CPZ-Client/issues"
@@ -63,25 +64,27 @@
     "@types/node": "^24.10.2",
     "@typescript-eslint/eslint-plugin": "^8.49.0",
     "@typescript-eslint/parser": "^8.49.0",
-    "copyfiles": "^2.4.1",
-    "electron": "^11.5.0",
-    "electron-builder": "^26.0.12",
     "eslint": "^9.39.1",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "rimraf": "^6.1.2",
     "typescript": "^5.9.3"
   },
   "dependencies": {
+	"copyfiles": "^2.4.1",
+    "electron": "^11.5.0",
+    "electron-builder": "^26.0.12",
     "discord-rpc": "^4.0.1",
     "electron-fetch": "^1.9.1",
     "electron-is-dev": "^3.0.1",
     "electron-log": "^5.4.3",
     "electron-prompt": "^1.7.0",
     "electron-store": "^8.2.0",
-    "electron-updater": "^6.6.2"
+    "electron-updater": "^6.6.2",
+    "node-gyp": "^12.1.0",
+    "patch-package": "^8.0.1"
   },
   "//": {
-	"For some reason this confuses the installation.": "We don't need to worry about it though because we're not including the adblocker.",
+    "For some reason this confuses the installation.": "We don't need to worry about it though because we're not including the adblocker.",
     "@ghostery/adblocker-electron": "^1.20.5",
     "cross-fetch": "^4.1.0"
   }
