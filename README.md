@@ -30,11 +30,9 @@ The client can also track the user's in-game location through Rich Presence. You
 
 ![image](./readme/rpctrackingconfirm.png)
 
-![image](./readme/rpctrackingloggedout.png)
-
 ![image](./readme/rpctrackingroom.png)
 
 ### License
 This project uses the [MIT License](https://github.com/ClubPenguinZero/CPZ-Client/blob/main/LICENSE).
 
-Modified from [Club Penguin Avalanche](https://github.com/Club-Penguin-Avalanche/CPA-Client).
+Modified from [Club Penguin Avalanche](https://github.com/Club-Penguin-Avalanche/CPA-Client). 💙
