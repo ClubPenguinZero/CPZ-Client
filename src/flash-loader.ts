@@ -21,7 +21,7 @@ const getPluginName = () => {
             break;
         case 'darwin':
             pluginName = 'assets/flash/PepperFlashPlayer.plugin';
-            pluginVer = '34.0.0.231';
+            pluginVer = '34.0.0.231'; // not sure what version this is either but this will satisfy the web check
             break;
         case 'linux':
             pluginName = 'assets/flash/libpepflashplayer.so';
