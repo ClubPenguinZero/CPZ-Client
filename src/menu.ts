@@ -4,7 +4,7 @@ import clearCache from "./cache";
 import toggleDevTools from "./dev-tools";
 import { enableOrDisableDiscordRPC, enableOrDisableDiscordRPCLocationTracking } from "./discord";
 import { Store } from "./store";
-import changeClubPenguinUrl, { ALLOW_URL_CHANGE } from "./urlchanger";
+import changeClubPenguinUrl, { gotoDefaultUrl, ALLOW_URL_CHANGE } from "./urlchanger";
 import { toggleFullScreen } from "./window";
 import { stringInject } from "./stringinject";
 import { GAME_NAME } from "./discord/constants";
@@ -16,63 +16,74 @@ const createMenuTemplate = (store: Store, mainWindow: BrowserWindow): MenuItemCo
 
     const template = [];
 
+    const optionsSubmenu: MenuItemConstructorOptions[] = [
+        {
+            label: localizer.__('MENU_CACHE'),
+            click: () => { clearCache(mainWindow); }
+        },
+        { type: 'separator' },
+        {
+            label: localizer.__('MENU_DEV_TOOLS'),
+            accelerator: 'CommandOrControl+Shift+I',
+            click: () => { toggleDevTools(store, mainWindow); }
+        },
+        { type: 'separator' }
+    ];
+    if (ALLOW_URL_CHANGE) {
+        optionsSubmenu.push(
+            {
+                label: stringInject(localizer.__('MENU_URL_CHANGE'), [GAME_NAME]),
+                click: () => { changeClubPenguinUrl(store, mainWindow); }
+            },
+            {
+                label: stringInject(localizer.__('MENU_GO_TO'), [GAME_NAME]),
+                click: () => { gotoDefaultUrl(store, mainWindow); }
+            },
+            { type: 'separator' }
+        );
+    };
+    optionsSubmenu.push(
+        {
+            label: localizer.__('MENU_REFRESH'),
+            accelerator: 'F5',
+            role: 'reload',
+        },
+        {
+            label: localizer.__('MENU_REFRESH_NOCACHE'),
+            accelerator: 'CommandOrControl+R',
+            click: () => { mainWindow.webContents.reloadIgnoringCache(); }
+        },
+        { type: 'separator' },
+        {
+            label: localizer.__('MENU_FULLSCREEN'),
+            accelerator: 'F11',
+            click: () => { toggleFullScreen(store, mainWindow); }
+        },
+        {
+            label: localizer.__('MENU_ZOOM_IN'),
+            role: 'zoomIn',
+            accelerator: 'CommandOrControl+=',
+        },
+        {
+            label: localizer.__('MENU_ZOOM_OUT'),
+            role: 'zoomOut',
+            accelerator: 'CommandOrControl+-',
+        },
+        {
+            label: localizer.__('MENU_ZOOM_RESET'),
+            role: 'resetZoom',
+            accelerator: 'CommandOrControl+0',
+        },
+        { type: 'separator' },
+        {
+            label: localizer.__('MENU_QUIT'),
+            role: 'quit'
+        }
+    );
     const options: MenuItemConstructorOptions = {
         id: '1',
         label: localizer.__('MENU_OPTIONS'),
-        submenu: [
-            {
-                label: localizer.__('MENU_CACHE'),
-                click: () => { clearCache(mainWindow); }
-            },
-            { type: 'separator' },
-            {
-                label: localizer.__('MENU_DEV_TOOLS'),
-                accelerator: 'CommandOrControl+Shift+I',
-                click: () => { toggleDevTools(store, mainWindow); }
-            },
-            { type: 'separator' },
-
-            // This is a lil ugly but I don't think it'll cause any weirdness
-            ALLOW_URL_CHANGE ? { label: stringInject(localizer.__('MENU_URL_CHANGE'), [GAME_NAME]), click: () => { changeClubPenguinUrl(store, mainWindow); }} : { type: 'separator' },
-
-            { type: 'separator' },
-            {
-                label: localizer.__('MENU_REFRESH'),
-                accelerator: 'F5',
-                role: 'reload',
-            },
-            {
-                label: localizer.__('MENU_REFRESH_NOCACHE'),
-                accelerator: 'CommandOrControl+R',
-                click: () => { mainWindow.webContents.reloadIgnoringCache(); }
-            },
-            { type: 'separator' },
-            {
-                label: localizer.__('MENU_FULLSCREEN'),
-                accelerator: 'F11',
-                click: () => { toggleFullScreen(store, mainWindow); }
-            },
-            {
-                label: localizer.__('MENU_ZOOM_IN'),
-                role: 'zoomIn',
-                accelerator: 'CommandOrControl+=',
-            },
-            {
-                label: localizer.__('MENU_ZOOM_OUT'),
-                role: 'zoomOut',
-                accelerator: 'CommandOrControl+-',
-            },
-            {
-                label: localizer.__('MENU_ZOOM_RESET'),
-                role: 'resetZoom',
-                accelerator: 'CommandOrControl+0',
-            },
-            { type: 'separator' },
-            {
-                label: localizer.__('MENU_QUIT'),
-                role: 'quit'
-            }
-        ]
+        submenu: optionsSubmenu
     };
     template.push(options);
     

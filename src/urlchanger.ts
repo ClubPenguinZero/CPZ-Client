@@ -1,5 +1,5 @@
 import { BrowserWindow, dialog } from "electron";
-import { Store } from "./store";
+import { Store, DEFAULT_URL } from "./store";
 import prompt from "electron-prompt";
 import { stringInject } from './stringinject';
 import { GAME_NAME } from "./discord/constants";
@@ -51,6 +51,16 @@ const changeClubPenguinUrl = async (store: Store, mainWindow: BrowserWindow) => 
     setUrlFromStore(store, result);
 
     mainWindow.loadURL(result);
+};
+
+export const gotoDefaultUrl = async (store: Store, mainWindow: BrowserWindow) => {
+    if (!ALLOW_URL_CHANGE) {
+        return;
+    }
+
+    setUrlFromStore(store, DEFAULT_URL);
+
+    mainWindow.loadURL(DEFAULT_URL);
 };
 
 export default changeClubPenguinUrl;

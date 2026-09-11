@@ -38,6 +38,7 @@
     "MENU_CACHE": "Clear Cache",
     "MENU_DEV_TOOLS": "Toggle Dev Tools",
     "MENU_URL_CHANGE": "Change {0} URL",
+    "MENU_GO_TO": "Go to {0}",
     "MENU_REFRESH": "Refresh",
     "MENU_REFRESH_NOCACHE": "Refresh Without Reading Cache",
     "MENU_FULLSCREEN": "Toggle Fullscreen",

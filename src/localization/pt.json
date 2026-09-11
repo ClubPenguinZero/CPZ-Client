@@ -38,6 +38,7 @@
     "MENU_CACHE": "Limpar Cache",
     "MENU_DEV_TOOLS": "Alternar Dev Tools",
     "MENU_URL_CHANGE": "Mudar a URL do {0}",
+    "MENU_GO_TO": "Ir para o {0}",
     "MENU_REFRESH": "Recarregar",
     "MENU_REFRESH_NOCACHE": "Recarregar Sem Cache",
     "MENU_FULLSCREEN": "Alternar Tela Cheia",

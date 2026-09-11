@@ -6,7 +6,7 @@ import { MemoryStore } from './store/MemoryStore';
 import { FileStore } from './store/FileStore';
 
 // Default URL the client visits
-export const PLAY_URL = 'https://play.cpzero.net/';
+export const DEFAULT_URL = 'https://www.cpzero.net/';
 
 export type Store = {
     public: BaseStore<PublicSchema>;
@@ -14,7 +14,7 @@ export type Store = {
 }
 
 export const defaultPublicValues: PublicSchema = {
-    url: PLAY_URL,
+    url: DEFAULT_URL,
     disableAds: false,
     enableDiscordRPC: true,
     enableDiscordRPCTracker: true,
