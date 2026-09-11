@@ -1,6 +1,6 @@
 {
   "name": "cpzero",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Desktop client for Club Penguin Zero",
   "main": "./compiled/main.js",
   "scripts": {
@@ -22,7 +22,7 @@
   "repository": "https://github.com/ClubPenguinZero/CPZ-Client",
   "author": "renanrcp",
   "contributors": [
-    "ooowoo",
+    "ooowoothevirtualhowler",
     "JeffTheRock",
     "ERmilburn02"
   ],
