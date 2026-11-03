@@ -6,5 +6,6 @@ export const SWF_ROOMS_PATH = '/rooms/';
 export const SWF_GAMES_PATH = '/games/';
 export const SWF_QUESTS_GAMES_PATH = '/games/quests/';
 export const SWF_IGLOO_ROOM_PATH = 'igloo.swf';
+export const SWF_PARTY_GAME_PATH = 'cp_party_games/';
 export const DISCORD_RPC_CLIENT_APP_ID: string = '1434669476821078068';
 export const LARGE_IMAGE_KEY = 'small_image';

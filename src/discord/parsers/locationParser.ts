@@ -1,6 +1,6 @@
 import { getDiscordStateFromStore, setDiscordStateInStore, setLocationStatus, setLocationStatusWithMatch } from "../../discord";
 import { Store } from "../../store";
-import { SWF_GAMES_PATH, SWF_IGLOO_ROOM_PATH, SWF_MIME_FILE, SWF_QUESTS_GAMES_PATH, SWF_ROOMS_PATH } from "../constants";
+import { SWF_GAMES_PATH, SWF_IGLOO_ROOM_PATH, SWF_MIME_FILE, SWF_QUESTS_GAMES_PATH, SWF_ROOMS_PATH, SWF_PARTY_GAME_PATH } from "../constants";
 
 const isNumeric = (value: string) => {
     return ((value != null) &&
@@ -35,6 +35,10 @@ export const parseAndUpdateLocation = async (store: Store, params: any) => {
 
         match = url.substring(swfPathIndex, url.indexOf(fileName + SWF_MIME_FILE) - 1);
 
+        if (match.startsWith(SWF_PARTY_GAME_PATH)) {
+            match = match.substring(SWF_PARTY_GAME_PATH.length);
+        }
+
         // if the match contains any '/' it is a subpath resource, just ignore it.
         if (match.includes('/')) {
             return;
@@ -61,19 +65,24 @@ export const parseAndUpdateLocation = async (store: Store, params: any) => {
 
     const state = getDiscordStateFromStore(store);
 
-    // Edge case for differentiating The Mine room from Cart Surfer.
-    if (match === 'mine' && url.includes(SWF_GAMES_PATH)) {
-        match = 'Cart Surfer';
-    }
-
-    // The location hasn't changed.
-    if (state.currentLocation && state.currentLocation.match === match.toLowerCase()) {
+    // Locations haven't loaded yet, nothing to match against.
+    if (!state.trackedLocations || state.trackedLocations.length === 0) {
         return;
     }
 
-    const location = state.trackedLocations.filter(location => {
-        return location.match === match.toLowerCase();
-    })[0];
+    // Edge case for differentiating The Mine room from Cart Surfer.
+    if (match === 'mine' && url.includes(SWF_GAMES_PATH)) {
+        match = 'cartsurfer';
+    }
+    const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const target = normalize(match);
+
+    // The location hasn't changed.
+    if (state.currentLocation && normalize(state.currentLocation.match) === target) {
+        return;
+    }
+
+    const location = state.trackedLocations.find(l => normalize(l.match) === target);
 
     state.currentLocation = location;
 

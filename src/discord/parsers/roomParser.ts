@@ -51,32 +51,49 @@ export const updateRooms = (store: Store, result: RoomsResponse) => {
 
     // Some overrides to fix some room data due to Disney weirdness.
     const locationOverrides: CPLocationOverride[] = [
-        /*roomLocationOverride('igloo', localizer.__('LOC_IGLOO')),
-
-        roomLocationOverride('dojo fire', localizer.__('LOC_DOJO_FIRE')),
-        roomLocationOverride('dojo water', localizer.__('LOC_DOJO_WATER')),
-        roomLocationOverride('dojo snow', localizer.__('LOC_DOJO_SNOW')),
-
-        gameLocationOverride('snow', localizer.__('LOC_GAME_SNOW')),
-        gameLocationOverride('smoothie', localizer.__('LOC_GAME_SMOOTHIE')),
-        gameLocationOverride('sled race', undefined, '', 'sled'),
+        roomLocationOverride('igloo', localizer.__('LOC_IGLOO')),
         
-        gameLocationOverride('igloo_card', localizer.__('LOC_GAME_CARD')),
+        gameLocationOverride('aqua grabber', undefined, undefined, 'sub'),
+        gameLocationOverride('astro barrier', undefined, undefined, 'astro'),
+        gameLocationOverride('bean counters', undefined, undefined, 'beans'),
+        gameLocationOverride('puffle roundup', undefined, undefined, 'roundup'),
+        gameLocationOverride('hydro hopper', undefined, undefined, 'hydro'),
+        gameLocationOverride('ice fishing', undefined, undefined, 'fish'),
+        gameLocationOverride('cart surfer', undefined, undefined, 'cartsurfer'),
+        gameLocationOverride('jet pack adventure', undefined, undefined, 'jetpack'),
+        gameLocationOverride("catchin' waves", undefined, undefined, 'waves'),
+        gameLocationOverride('dj3k', undefined, undefined, 'mixmaster'),
+        gameLocationOverride('puffle launch', undefined, undefined, 'cannon'),
+        gameLocationOverride('puffle rescue', undefined, undefined, 'rescue'),
         gameLocationOverride('system defender', undefined, undefined, 'tower'),
         gameLocationOverride('bits and bolts', undefined, undefined, 'robots'),
-        gameLocationOverride('wave', undefined, undefined, 'waves'),
-        gameLocationOverride('biscuit', undefined, undefined, 'hydro'),
-        gameLocationOverride('puffle', undefined, undefined, 'roundup'),
-        gameLocationOverride('puffle rescue', undefined, undefined, 'rescue'),
-        gameLocationOverride('subgame', undefined, undefined, 'sub'),
-        gameLocationOverride('card jitsu', undefined, undefined, 'card'),
-        gameLocationOverride('fire sensei', undefined, undefined, 'senseifire'),
-        
-        gameLocationOverride('find four', undefined, undefined, 'four', true),
-        gameLocationOverride('treasure hunt', undefined, undefined, 'treasurehunt', true),
+        gameLocationOverride('dance contest', undefined, undefined, 'dancing'),
+        gameLocationOverride('smoothie smash', undefined, undefined, 'smoothie'),
+        gameLocationOverride('sled race', undefined, undefined, 'sled'),
 
-        gameLocationOverride('mission', undefined, undefined, 'q', true, true)*/
-        // Zero updates this file
+        gameLocationOverride('sensei', undefined, undefined, 'sensei'),
+        gameLocationOverride('fire sensei', undefined, undefined, 'senseifire'),
+        gameLocationOverride('water sensei', undefined, undefined, 'watersensei'),
+
+        gameLocationOverride('card-jitsu', undefined, undefined, 'card'),
+        gameLocationOverride('card-jitsu fire', undefined, undefined, 'fire'),
+        gameLocationOverride('card-jitsu water', undefined, undefined, 'water'),
+        gameLocationOverride('card-jitsu snow', undefined, undefined, 'snow'),
+
+        gameLocationOverride('paint by letters: my puffle', undefined, undefined, 'book1'),
+        gameLocationOverride('paint by letters: burnt out bulbs', undefined, undefined, 'book2'),
+        gameLocationOverride('paint by letters: lime green dojo clean', undefined, undefined, 'book3'),
+
+        gameLocationOverride('balloon pop', undefined, undefined, 'balloon'),
+        gameLocationOverride('ring the bell', undefined, undefined, 'bell'),
+        gameLocationOverride('feed-a-puffle', undefined, undefined, 'feed'),
+        gameLocationOverride('memory card game', undefined, undefined, 'memory'),
+        gameLocationOverride('puffle paddle', undefined, undefined, 'paddle'),
+        gameLocationOverride('puffle shuffle', undefined, undefined, 'shuffle'),
+        gameLocationOverride('spin to win', undefined, undefined, 'spin'),
+        gameLocationOverride('puffle soaker', undefined, undefined, 'soaker'),
+
+        gameLocationOverride('mission', undefined, undefined, 'q', true, true),
     ];
 
     /*
@@ -129,9 +146,11 @@ export const updateRooms = (store: Store, result: RoomsResponse) => {
             if (room_key != undefined) {
                 room_match = room_key;
             } else {
-                room_match = room_name.toLowerCase().replace(' ', '');
+                room_match = room_name.toLowerCase().replace(/\s+/g, '');
             }
         }
+
+        room_match = room_match.replace(/\s+/g, '');
 
         // Sets the localized name if one exists.
         // We can skip this if the display name was overridden.
